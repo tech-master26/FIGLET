@@ -42,7 +42,7 @@ echo -e "${figlet_color}"
 figlet -f .sw.flf "FIGLet"
 echo -e "\033[0m"
 
-echo -e "${welcome_color}Welcome to ASCII Art Generator\033[0m"
+echo -e "${welcome_color}Welcome to ASCII Generator\033[0m"
 
 # Prompt for the text input in green color
 echo -e "\033[0;32mEnter your text:\033[0m"
