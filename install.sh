@@ -29,61 +29,65 @@ echo -e "#!/bin/bash
 colors=('\033[0;31m' '\033[0;32m' '\033[0;33m' '\033[0;34m' '\033[0;35m' '\033[0;36m')
 
 # Randomly select a color for the FIGLet banner
-figlet_color=\"\${colors[\$RANDOM % \${#colors[@]}]}\"
+figlet_color="${colors[$RANDOM % ${#colors[@]}]}"
 
 # Randomly select a color for the ASCII art
-ascii_color=\"\${colors[\$RANDOM % \${#colors[@]}]}\"
+ascii_color="${colors[$RANDOM % ${#colors[@]}]}"
+
+# Randomly select a color for the welcome text
+welcome_color="${colors[$RANDOM % ${#colors[@]}]}"
 
 # Colorized FIGLet banner
-echo -e \"\${figlet_color}\"
- figlet FIGlet
-echo -e \"\033[0m\"
+echo -e "${figlet_color}"
+figlet -f .sw.flf "FIGLet"
+echo -e "\033[0m"
 
-echo \"Welcome to ASCII Art Generator\"
+echo -e "${welcome_color}Welcome to ASCII Art Generator\033[0m"
 
-# Prompt for the text input
-read -p \"Enter the text: \" input_text
+# Prompt for the text input in green color
+echo -e "\033[0;32mEnter your text:\033[0m"
+read -r input_text
 
 # Prompt for the font selection
-read -p \"Select the font (press Enter for default): \" font_selection
+read -p "Select the font (press Enter for default): " font_selection
 
 # Font selection validation
-if [ -n \"\$font_selection\" ]; then
-  if [ -f \"\$font_selection\" ]; then
-    font_option=\"-f \$font_selection\"
+if [ -n "$font_selection" ]; then
+  if [ -f "$font_selection" ]; then
+    font_option="-f $font_selection"
   else
-    echo \"Font file not found. Using default font.\"
-    font_option=\"\"
+    echo "Font file not found. Using default font."
+    font_option=""
   fi
 else
-  font_option=\"\"
+  font_option=""
 fi
 
 # Generate the ASCII art
-generated_ascii=\$(figlet -l \$font_option \"\$input_text\")
+generated_ascii=$(figlet -l $font_option "$input_text")
 
 # Display the ASCII art preview
-echo -e \"\${ascii_color}\"
-echo -e \"\$generated_ascii\"
-echo -e \"\033[0m\"
+echo -e "${ascii_color}"
+echo -e "$generated_ascii"
+echo -e "\033[0m"
 
 # Prompt for saving the file
-read -p \"Do you want to save the generated ASCII art? (y/n): \" save_option
+read -p "Do you want to save the generated ASCII art? (y/n): " save_option
 
-if [ \"\$save_option\" == \"y\" ]; then
+if [ "$save_option" == "y" ]; then
   # Prompt for the file name
-  read -p \"Enter the file name (without extension): \" file_name
+  read -p "Enter the file name (without extension): " file_name
 
   # Add .sh extension if not provided
-  if [[ \$file_name != *\".sh\" ]]; then
-    file_name=\"\$file_name.sh\"
+  if [[ $file_name != *".sh" ]]; then
+    file_name="$file_name.sh"
   fi
 
   # Save the file in the Termux home directory
-  file_path=\"\$HOME/\$file_name\"
-  echo -e \"#!/bin/bash\n\necho -e \\\"\$generated_ascii\\\"\" > \"\$file_path\"
-  chmod +x \"\$file_path\"
-  echo \"File saved as \$file_path\"
+  file_path="$HOME/$file_name"
+  echo -e "#!/bin/bash\n\necho -e \"$generated_ascii\"" > "$file_path"
+  chmod +x "$file_path"
+  echo "File saved as $file_path"
 fi" > Figlet.sh
 
 chmod +x install.sh
