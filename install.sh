@@ -36,13 +36,7 @@ ascii_color=\"\${colors[\$RANDOM % \${#colors[@]}]}\"
 
 # Colorized FIGLet banner
 echo -e \"\${figlet_color}\"
- _______  __    _______  __       _______ .___________.
-|   ____||  |  /  _____||  |     |   ____||           |
-|  |__   |  | |  |  __  |  |     |  |__   `---|  |----`
-|   __|  |  | |  | |_ | |  |     |   __|      |  |
-|  |     |  | |  |__| | |  `----.|  |____     |  |
-|__|     |__|  \______| |_______||_______|    |__|
-
+ figlet FIGlet
 echo -e \"\033[0m\"
 
 echo \"Welcome to ASCII Art Generator\"
