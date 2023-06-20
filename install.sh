@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Array of required packages
-packages=("figlet" "lolcat")
+packages=("figlet" "ruby")
 
 # Check if packages are already installed
 missing_packages=()
@@ -16,6 +16,7 @@ if [ ${#missing_packages[@]} -gt 0 ]; then
   echo "Installing required packages..."
   apt update
   apt install -y "${missing_packages[@]}"
+  gem install lolcat -y
   echo "Packages installed successfully!"
 else
   echo "Required packages are already installed."
