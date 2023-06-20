@@ -67,8 +67,11 @@ This script is a simple tool that generates ASCII art using Figlet. It allows yo
 
 # Fonts Collection
 download fonts for ASCII 
-
-[Fonts](http://www.figlet.org/fontdb.cgi)
+Click 👉
+[Fonts](http://www.figlet.org/fontdb.cgi) or goto the following link:
+```
+http://www.figlet.org/fontdb.cgi
+```
 
 ## Contributing
 
