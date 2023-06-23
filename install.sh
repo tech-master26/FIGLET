@@ -42,7 +42,7 @@ ascii_color=\"\${colors[\$RANDOM % \${#colors[@]}]}\"
 
 # Colorized FIGLet banner
 echo -e \"\${figlet_color}\"
-figlet -l -c FIGLet
+figlet -f .sw.flf FIGLet
 echo -e \"\033[0m\"
 
 echo -e "${figlet_color}Welcome to ASCII Art Generator"
